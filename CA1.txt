@@ -1,0 +1,35 @@
+3.
+\/\*[a-zA-Z0-9/*\n]*\*\/
+
+4.
+SPECIAL_TOKEN :
+{
+    <MULTI_LINE_COMMENT: "/*" (["a"-"z","A"-"Z","0"-"9","/","*","\n"])* "*/">
+}
+
+5.
+no value
+
+6.
+Statement can start with Expression and this variable has left recursivity, so there is no way to find a value of lookahead, k, that makes this part of the grammar LL(k).
+
+7.
+k=1
+
+8.
+---------- | "int[]"               | "boolean"              | "int"               | "a-Z0-9"
+Type        | Type -> "int[]" | Type -> "boolean" | Type -> "int" | Type -> Identifier
+Identifier |                         |                               |                       | Identifier -> "a-Z0-9"
+
+9.
+TO DO
+
+10.
+1. Expression -> "new" "int" "[" Expression "]": new int[true]
+2. Expression -> Expression "+" Expression: true + this
+3. Expression -> Expression "." "length": true.length
+
+11.
+1. Sum ("+") must have equal types (String + String or IntegerLiteral + IntegerLiteral)
+2. "And ("&&") must have 2 booleans
+3. Not ("!") can't be used on an IntegerLiteral
